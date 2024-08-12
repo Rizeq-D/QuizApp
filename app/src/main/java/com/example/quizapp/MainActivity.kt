@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
             }else{
                 val intent = Intent(this, QuestionsMainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
     }
