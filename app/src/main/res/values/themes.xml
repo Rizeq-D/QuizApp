@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.QuizApp" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/teal_200</item>
-        <item name="android:colorSecondary">@color/teal_700</item>
-        <item name="android:statusBarColor">@color/teal_200</item>
+    <!-- Base application theme -->
+    <style name="Theme.QuizApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/teal_200</item>
+        <item name="colorPrimaryVariant">@color/teal_700</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/teal_700</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorOnBackground">@android:color/black</item>
     </style>
+
 </resources>
