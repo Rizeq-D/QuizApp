@@ -10,11 +10,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FFD5190B</color>
-    <color name="yellow">#4E009688</color>
+    <color name="yellow">#112423</color>
     <color name="lighter_blue">#FFC4DAEC</color>
     <color name="darkRed">#360603</color>
     <color name="lightGrey">#FF464544</color>
     <color name="light_blue">#FF64A8DF</color>
-    <color name="light_orange">#9BE6BC7D</color>
+    <color name="light_orange">#6D5F49</color>
     <color name="light_green">#FFA5A98E</color>
 </resources>
