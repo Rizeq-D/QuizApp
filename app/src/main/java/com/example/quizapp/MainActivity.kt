@@ -14,16 +14,17 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
 
         val btnStart : Button = findViewById(R.id.btnStart)
-        val btnName : EditText = findViewById(R.id.btnName)
+        val theName : EditText = findViewById(R.id.btnName)
 
         btnStart.setOnClickListener {
-            if (btnName.text.isEmpty()) {
+            if (theName.text.isEmpty()) {
                 Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show()
             } else {
 
                 Log.d("MainActivity", "Starting QuestionsMainActivity")
 
                 val intent = Intent(this, QuestionsMainActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, theName.text.toString())
                 startActivity(intent)
 
 

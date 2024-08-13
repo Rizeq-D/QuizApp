@@ -6,5 +6,7 @@
     <string name="start">Start</string>
     <string name="what_is_the_capital_of_australia">What is the capital of Australia?</string>
     <string name="Submit12">Submit</string>
+    <string name="results">The Results</string>
+    <string name="restart">Restart</string>
 
 </resources>

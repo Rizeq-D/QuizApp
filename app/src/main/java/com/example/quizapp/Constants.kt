@@ -2,7 +2,9 @@ package com.example.quizapp
 
 import Question
 
-object QuizContent {
+object Constants {
+
+    const val USER_NAME : String = "user_name"
 
     fun getQuestions() : ArrayList<Question> {
 

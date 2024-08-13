@@ -6,7 +6,12 @@ data class Question(
     var option3: String,
     var option4: String,
     var answer: Int,
-)
+) {
+    fun isAnswerCorrect(selectedOption: Int): Boolean {
+        return selectedOption == answer
+    }
+}
+
 
 
 

@@ -2,13 +2,12 @@ package com.example.quizapp
 
 import Question
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -17,37 +16,33 @@ class QuestionsMainActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionList: ArrayList<Question> = ArrayList()
     private var mSelectedOptionPosition: Int = 0
+    private var mUserName : String? = null
+
 
     private var progressBar: ProgressBar? = null
     private var progressNumber: TextView? = null
     private var theQuestion: TextView? = null
-
     private var optionOne: TextView? = null
     private var optionTwo: TextView? = null
     private var optionThree: TextView? = null
     private var optionFour: TextView? = null
-
     private var btnSubmit: Button? = null
+
+    private val userAnswers = mutableMapOf<Int, Int>()
 
     @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Log.d("QuestionsMainActivity", "onCreate started")
-        // Rest of your initialization code
-        Log.d("QuestionsMainActivity", "onCreate finished")
-
         setContentView(R.layout.activity_questions_main)
 
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
         progressBar = findViewById(R.id.progress_bar)
         progressNumber = findViewById(R.id.progress_number)
-
         theQuestion = findViewById(R.id.question1)
         optionOne = findViewById(R.id.option1)
         optionTwo = findViewById(R.id.option2)
         optionThree = findViewById(R.id.option3)
         optionFour = findViewById(R.id.option4)
-
         btnSubmit = findViewById(R.id.btn_submit12)
 
         optionOne?.setOnClickListener(this)
@@ -56,17 +51,15 @@ class QuestionsMainActivity : AppCompatActivity(), View.OnClickListener {
         optionFour?.setOnClickListener(this)
         btnSubmit?.setOnClickListener(this)
 
-        mQuestionList = QuizContent.getQuestions()
+        mQuestionList = Constants.getQuestions()
 
         setQuestion()
     }
 
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
-
         defaultOptionsView()
-
-        val question: Question = mQuestionList[mCurrentPosition - 1]
+        val question = mQuestionList[mCurrentPosition - 1]
         progressBar?.progress = mCurrentPosition
         progressNumber?.text = "$mCurrentPosition /${progressBar?.max}"
         theQuestion?.text = question.question
@@ -85,15 +78,13 @@ class QuestionsMainActivity : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("ResourceType")
     private fun defaultOptionsView() {
         val options = listOf(optionOne, optionTwo, optionThree, optionFour)
-
         for (option in options) {
-            Log.d("OptionsView", "Updating option: $option")
             option?.let {
                 it.setTextColor(ContextCompat.getColor(this, R.color.teal_700))
                 it.typeface = android.graphics.Typeface.DEFAULT
                 it.background = ContextCompat.getDrawable(this, R.drawable.options)
-                it.invalidate() // Force a redraw of the view
-                it.requestLayout() // Request a re-layout of the view
+                it.invalidate()
+                it.requestLayout()
             }
         }
     }
@@ -110,38 +101,36 @@ class QuestionsMainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.option1 -> {
-                optionOne?.let {
-                    selectedOptionsView(it, 1)
-                }
+                optionOne?.let { selectedOptionsView(it, 1) }
             }
             R.id.option2 -> {
-                optionTwo?.let {
-                    selectedOptionsView(it, 2)
-                }
+                optionTwo?.let { selectedOptionsView(it, 2) }
             }
             R.id.option3 -> {
-                optionThree?.let {
-                    selectedOptionsView(it, 3)
-                }
+                optionThree?.let { selectedOptionsView(it, 3) }
             }
             R.id.option4 -> {
-                optionFour?.let {
-                    selectedOptionsView(it, 4)
-                }
+                optionFour?.let { selectedOptionsView(it, 4) }
             }
             R.id.btn_submit12 -> {
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
-                    when {
-                        mCurrentPosition <= mQuestionList.size -> {
-                            setQuestion()
-                        }
-                        else -> {
-                            Toast.makeText(this, "You made it!", Toast.LENGTH_LONG).show()
-                        }
+                    if (mCurrentPosition <= mQuestionList.size) {
+                        setQuestion()
+                    } else {
+
+                        val score = calculateScore()
+                        val intent = Intent(this, ResultsMainActivity::class.java)
+                        intent.putExtra(Constants.USER_NAME, mUserName)
+                        intent.putExtra("SCORE", score)
+                        startActivity(intent)
+                        finish()
                     }
                 } else {
                     val question = mQuestionList[mCurrentPosition - 1]
+
+                    userAnswers[mCurrentPosition - 1] = mSelectedOptionPosition
+
                     if (question.answer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option)
                     }
@@ -160,44 +149,21 @@ class QuestionsMainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun answerView(answer: Int, drawableView: Int) {
         when (answer) {
-            1 -> {
-                optionOne?.background = ContextCompat.getDrawable(
-                    this,
-                    drawableView
-                )
-            }
-            2 -> {
-                optionTwo?.background = ContextCompat.getDrawable(
-                    this@QuestionsMainActivity,
-                    drawableView
-                )
-            }
-            3 -> {
-                optionThree?.background = ContextCompat.getDrawable(
-                    this@QuestionsMainActivity,
-                    drawableView
-                )
-            }
-            4 -> {
-                optionFour?.background = ContextCompat.getDrawable(
-                    this@QuestionsMainActivity,
-                    drawableView
-                )
-            }
+            1 -> optionOne?.background = ContextCompat.getDrawable(this, drawableView)
+            2 -> optionTwo?.background = ContextCompat.getDrawable(this, drawableView)
+            3 -> optionThree?.background = ContextCompat.getDrawable(this, drawableView)
+            4 -> optionFour?.background = ContextCompat.getDrawable(this, drawableView)
         }
     }
+
+    private fun calculateScore(): Int {
+        var score = 0
+        for ((index, selectedAnswer) in userAnswers) {
+            val question = mQuestionList[index]
+            if (question.isAnswerCorrect(selectedAnswer)) {
+                score++
+            }
+        }
+        return score
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
