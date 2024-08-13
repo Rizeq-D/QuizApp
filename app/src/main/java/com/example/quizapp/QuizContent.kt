@@ -1,5 +1,7 @@
 package com.example.quizapp
 
+import Question
+
 object QuizContent {
 
     fun getQuestions() : ArrayList<Question> {
@@ -10,7 +12,7 @@ object QuizContent {
             1, "What is the capital of Australia?",
             "Sydney", "Melbourne",
             "Canberra", "Brisbane",
-            "Canberra"
+            3
         )
         questionsList.add(question1)
 
@@ -18,7 +20,7 @@ object QuizContent {
             1, "What is the capital of Brazil?",
             "Rio de Janeiro", "Brasília",
             "São Paulo", "Salvador",
-            "Brasília"
+            2
         )
         questionsList.add(question2)
 
@@ -26,7 +28,7 @@ object QuizContent {
             1, "What is the capital of Canada?",
             "Toronto", "Vancouver",
             "Montreal", "Ottawa",
-            "Ottawa"
+            4
         )
         questionsList.add(question3)
 
@@ -34,7 +36,7 @@ object QuizContent {
             1, "What is the currency of Japan?",
             "Yen", "Yuan",
             "Baht", "Won",
-            "Yen"
+            1
         )
         questionsList.add(question4)
 
@@ -42,7 +44,7 @@ object QuizContent {
             1, "What is the currency of Switzerland?",
             "Euro", "Pound",
             "Franc", "Krona",
-            "Franc"
+            3
         )
         questionsList.add(question5)
 
@@ -50,7 +52,7 @@ object QuizContent {
             1, "What is the currency of South Africa?",
             "Shilling", "Dollar",
             "Peso", "Rand",
-            "Rand"
+            4
         )
         questionsList.add(question6)
 
@@ -58,7 +60,7 @@ object QuizContent {
             1, "Who wrote Pride and Prejudice?",
             "Charlotte Brontë", "Mary Shelley",
             "Emily Dickinson", "Jane Austen",
-            "Jane Austen"
+            4
         )
         questionsList.add(question7)
 
@@ -66,7 +68,7 @@ object QuizContent {
             1, "Who is the author of Moby-Dick?",
             "Mark Twain", "Herman Melville",
             "Edgar Allan Poe", "Nathaniel Hawthorne",
-            "Herman Melville"
+            2
         )
         questionsList.add(question8)
 
@@ -74,7 +76,7 @@ object QuizContent {
             1, "Who wrote 1984?",
             "Aldous Huxley", "Ray Bradbury",
             "J.R.R. Tolkien", "George Orwell",
-            "George Orwell"
+            4
         )
         questionsList.add(question9)
 
@@ -82,7 +84,7 @@ object QuizContent {
             1, "Who was the first woman to win a Nobel Prize?",
             "Marie Curie", "Rosalind Franklin",
             "Lise Meitner", "Dorothy Hodgkin",
-            "Marie Curie"
+            1
         )
         questionsList.add(question10)
 
@@ -90,7 +92,7 @@ object QuizContent {
             1, "Who is known for discovering the structure of DNA?",
             "Ada Lovelace", "Rosalind Franklin",
             "Rachel Carson", "Barbara McClintock",
-            "Rosalind Franklin"
+            2
         )
         questionsList.add(question11)
 
@@ -98,7 +100,7 @@ object QuizContent {
             1, "Who was the first woman to travel into space?",
             "Sally Ride", "Eileen Collins",
             "Valentina Tereshkova", "Mae Jemison",
-            "Valentina Tereshkova"
+            3
         )
         questionsList.add(question12)
 
@@ -107,7 +109,7 @@ object QuizContent {
                     "its massive library and trade routes?",
             "Ebla", "Aleppo",
             "Homs", "Damascus",
-            "Ebla"
+            1
         )
         questionsList.add(question13)
 
@@ -115,7 +117,7 @@ object QuizContent {
             1, "Which ancient empire was centered in present-day Syria?",
             "Assyrian Empire", "Roman Empire",
             "Persian Empire", "Ottoman Empire",
-            "Assyrian Empire"
+            1
         )
         questionsList.add(question14)
 
@@ -123,7 +125,7 @@ object QuizContent {
             1, "What is the ancient city of Palmyra in Syria famous for?",
             "Egyptian pyramids", "Roman ruins",
             "Ziggurats", "Hanging gardens",
-            "Roman ruins"
+            2
         )
         questionsList.add(question15)
 
@@ -131,7 +133,7 @@ object QuizContent {
             1, "Who painted the Mona Lisa?",
             "Vincent van Gogh", "Pablo Picasso",
             "Leonardo da Vinci", "Michelangelo",
-            "Leonardo da Vinci"
+            3
         )
         questionsList.add(question16)
 
@@ -139,7 +141,7 @@ object QuizContent {
             1, "Which artist is famous for the painting The Starry Night?",
             "Claude Monet", "Vincent van Gogh",
             "Edvard Munch", "Gustav Klimt",
-            "Vincent van Gogh"
+            2
         )
         questionsList.add(question17)
 
@@ -147,7 +149,7 @@ object QuizContent {
             1, "Which of these is a famous work by Michelangelo?",
             "David", "The Scream",
             "he Persistence of Memory", "The Night Watch",
-            "David"
+            1
         )
         questionsList.add(question18)
 

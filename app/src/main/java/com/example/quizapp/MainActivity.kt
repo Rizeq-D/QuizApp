@@ -2,6 +2,7 @@ package com.example.quizapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,18 +13,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn_start : Button = findViewById(R.id.btnStart)
-        val btn_name : EditText = findViewById(R.id.btnName)
+        val btnStart : Button = findViewById(R.id.btnStart)
+        val btnName : EditText = findViewById(R.id.btnName)
 
-        btn_start.setOnClickListener {
-            if (btn_name.text.isEmpty()) {
-                Toast.makeText(this,
-                    "Please enter your name", Toast.LENGTH_LONG).show()
-            }else{
+        btnStart.setOnClickListener {
+            if (btnName.text.isEmpty()) {
+                Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show()
+            } else {
+
+                Log.d("MainActivity", "Starting QuestionsMainActivity")
+
                 val intent = Intent(this, QuestionsMainActivity::class.java)
                 startActivity(intent)
-                finish()
+
+
+                Log.d("MainActivity", "Finished starting QuestionsMainActivity")
+
             }
         }
+
     }
 }

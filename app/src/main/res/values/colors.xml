@@ -6,15 +6,15 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="purple_900">#130339</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#E7FFEB3B</color>
+    <color name="teal_700">#FFEB3B</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FFD5190B</color>
-    <color name="yellow">#112423</color>
+    <color name="light_green">#009688</color>
     <color name="lighter_blue">#FFC4DAEC</color>
     <color name="darkRed">#360603</color>
     <color name="lightGrey">#FF464544</color>
     <color name="light_blue">#FF64A8DF</color>
-    <color name="light_orange">#6D5F49</color>
-    <color name="light_green">#949A70</color>
+    <color name="light_brown">#6D5F49</color>
+    <color name="light_khaki">#949A70</color>
 </resources>

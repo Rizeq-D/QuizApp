@@ -1,11 +1,12 @@
-package com.example.quizapp
-
 data class Question(
-    val id : Int,
-    val question : String,
-    val option1 : String,
-    val option2 : String,
-    val option3 : String,
-    val option4 : String,
-    val answer : String
+    val id: Int,
+    var question: String,
+    var option1: String,
+    var option2: String,
+    var option3: String,
+    var option4: String,
+    var answer: Int,
 )
+
+
+
